@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html> 
+<head> 
+<title>Products</title>
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        min-height: 100vh;
+
+        background: url("bom-dia-java.gif");
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+
+        /* IMPORTANT: allow the page to scroll */
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    /* Navigation */
+    .navigation {
+        margin: 20px;
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .nav-btn {
+        text-decoration: none;
+        background: rgba(255, 255, 255, 0.9);
+        color: #666;
+
+        padding: 12px 25px;
+        min-width: 110px;
+
+        border-radius: 4px;
+
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+
+        transition: 0.3s;
+    }
+
+    .nav-btn i {
+        margin-right: 7px;
+    }
+
+    .nav-btn:hover {
+        background: white;
+        color: #163b7a;
+
+        transform: translateY(-3px);
+
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+    }
+
+    /* Product container */
+    .product-box {
+        width: 90%;
+        max-width: 1400px;
+        background: white;
+
+        margin: 20px auto 40px;
+        padding: 30px;
+
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    .product-box h1 {
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+
+    .product-box > p {
+        margin-bottom: 25px;
+    }
+
+    /* Products */
+    .products {
+        display: grid;
+
+        /* 3 products per row */
+        grid-template-columns: repeat(3, 1fr);
+
+        gap: 20px;
+        width: 100%;
+    }
+
+    /* Product card */
+    .card {
+        background: #f5f5f5;
+
+        padding: 15px;
+
+        text-align: center;
+
+        border-radius: 8px;
+
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card img {
+        width: 100%;
+        height: 200px;
+
+        object-fit: contain;
+
+        border-radius: 5px;
+
+        background: white;
+    }
+
+    .card h3 {
+        min-height: 45px;
+        margin: 15px 0 10px;
+    }
+
+    .card p {
+        line-height: 1.5;
+    }
+
+    .price {
+        font-size: 20px;
+        font-weight: bold;
+        color: #0b3d91;
+
+        margin: 10px 0;
+    }
+
+    .inquire {
+        width: 100%;
+
+        padding: 10px;
+
+        margin-top: auto;
+
+        background: #0b3d91;
+        color: white;
+
+        border: none;
+        border-radius: 5px;
+
+        cursor: pointer;
+
+        font-size: 16px;
+    }
+
+    .inquire:hover {
+        background: #082d6b;
+    }
+
+    /* Tablet */
+    @media (max-width: 900px) {
+        .products {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+        .product-box {
+            width: 95%;
+            padding: 15px;
+        }
+
+        .products {
+            grid-template-columns: 1fr;
+        }
+
+        .card img {
+            height: 220px;
+        }
+    }
+</style>
+
+</head> <body>
+<!-- Navigation -->
+<div class="navigation">
+    <a href="Home.html" class="nav-btn">
+        <i class="fa-solid fa-house"></i>
+        Back to Home
+    </a>
+</div>
+
+<!-- Products -->
+<div class="product-box">
+
+    <h1>Products</h1>
+
+    <p>Browse our available products.</p>
+
+    <div class="products">
+
+        <div class="card">
+            <img src="short.webp" alt="Under Armour Short">
+            <h3>Under Armour Short</h3>
+            <p>
+                Comfortable, lightweight, and stylish for everyday wear.
+            </p>
+            <p class="price">&#8369; 500</p>
+            <button class="inquire">Inquire Now</button>
+        </div>
+
+        <div class="card">
+            <img src="long sleeve.jpg"
+                 alt="Under Armour Compression Long Sleeve">
+            <h3>Under Armour Compression Long Sleeve T-Shirt</h3>
+            <p>
+                Comfortable, fitted, and suitable for sports or workouts.
+            </p>
+            <p class="price">&#8369; 600</p>
+            <button class="inquire">Inquire Now</button>
+        </div>
+
+        <div class="card">
+            <img src="bag.jpg" alt="Under Armour Backpack">
+            <h3>Under Armour Backpack</h3>
+            <p>
+                Durable, spacious, and perfect for carrying everyday essentials.
+            </p>
+            <p class="price">&#8369; 1,500</p>
+            <button class="inquire">Inquire Now</button>
+        </div>
+
+        <div class="card">
+            <img src="shoe.webp" alt="Under Armour Running Shoes">
+            <h3>Under Armour Running Shoes</h3>
+            <p>
+                Lightweight and comfortable shoes designed to provide reliable support and cushioning during every run.
+            </p>
+            <p class="price">&#8369; 2,000</p>
+            <button class="inquire">Inquire Now</button>
+        </div>
+
+        <div class="card">
+            <img src="pants.jpg" alt="Under Armour ">
+            <h3>Under Armour Legging Pants</h3>
+            <p>
+                Stretchy and comfortable leggings designed for flexibility, support, and all-day movement.
+            </p>
+            <p class="price">&#8369; 900</p>
+            <button class="inquire">Inquire Now</button>
+        </div>
+
+        <div class="card">
+            <img src="smart watch.webp" alt="Under Armour Smart Watch">
+            <h3>Under Armour Smart Watch</h3>
+            <p>
+                Smart and stylish watch with useful features for tracking workouts, staying active, and managing your daily activities.
+            </p>
+            <p class="price">&#8369; 3,000</p>
+            <button class="inquire">Inquire Now</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

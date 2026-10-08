@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Homepage</title>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            background: url(matrix-matrix-code.gif);
+            object-fit: cover;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+            overflow: hidden;
+            position: relative;
+        }
+        body::before {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 50%;
+            left: -180px;
+            bottom: -200px;
+        }
+
+        body::after {
+            content: "";
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            right: -100px;
+            top: -100px;
+        }
+        .container {
+            width: 90%;
+            max-width: 850px;
+            text-align: center;
+            z-index: 2;
+        }
+        .welcome-card {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(10px);
+
+            padding: 40px 30px;
+            border-radius: 4px;
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.18);
+
+            margin-bottom: 30px;
+        }
+        .welcome-card h1 {
+            color: #333;
+            font-size: 30px;
+            margin-bottom: 25px;
+        }
+        .welcome-card p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 15px;
+            max-width: 700px;
+            margin: auto;
+        }
+        .logout-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            margin-top: 20px;
+            padding: 12px 28px;
+
+            border: none;
+            cursor: pointer;
+
+            background: #163b7a;
+            color: white;
+
+            font-weight: bold;
+            border-radius: 3px;
+
+            transition: 0.3s;
+        }
+        .logout-btn:hover {
+            background: #0d2855;
+            transform: translateY(-2px);
+        }
+        .navigation {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .nav-btn {
+            text-decoration: none;
+
+            background: rgba(255, 255, 255, 0.9);
+            color: #666;
+
+            padding: 12px 25px;
+            min-width: 110px;
+
+            border-radius: 4px;
+
+            box-shadow:
+                0 4px 10px rgba(0, 0, 0, 0.12);
+
+            transition: 0.3s;
+        }
+
+        .nav-btn i {
+            margin-right: 7px;
+        }
+
+        .nav-btn:hover {
+            background: white;
+            color: #163b7a;
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 8px 18px rgba(0, 0, 0, 0.18);
+        }
+        @media (max-width: 600px) {
+
+            .welcome-card {
+                padding: 30px 20px;
+            }
+
+            .welcome-card h1 {
+                font-size: 24px;
+            }
+
+            .navigation {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-btn {
+                width: 200px;
+            }
+       }
+</style>
+</head>
+<body>
+
+<div class="container">
+<div class="welcome-card">
+<h1>Welcome to my Homepage!</h1>
+<p>
+Hello! My name is <strong>Jay Mark Ramos</strong>,
+Welcome to my website
+</p>
+<button class="logout-btn" onclick="logout()">
+<i class="fa-solid fa-right-from-bracket"></i>
+LOGOUT
+</button>
+</div>
+<div class="navigation">
+<a href="Home.html" class="nav-btn">
+<i class="fa-solid fa-house"></i>
+Home
+</a>
+<a href="About.html" class="nav-btn">
+<i class="fa-solid fa-circle-info"></i>
+About
+</a>
+<a href="Product.html" class="nav-btn">
+<i class="fa-solid fa-briefcase"></i>
+Product
+</a>
+<a href="Contact.html" class="nav-btn">
+<i class="fa-solid fa-envelope"></i>
+Contact
+</a>
+</div>
+</div>
+<script>
+function logout() {
+alert("You have been logged out!");
+window.location.href = "Log In Form.html";
+}
+</script>
+</body>
+</html>
