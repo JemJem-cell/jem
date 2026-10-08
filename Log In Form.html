@@ -1,192 +1,362 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Log In Form</title>
+
 <style>
-body {font-family: Arial, Helvetica, sans-serif;
-background: url(computer.gif);
-            object-fit: cover;
-            background-attachment: fixed;
-            background-position: center;
-            background-size: cover;
-}
-h2{
-  color: white;
-  font-size: 50px;
-}
-/* Full-width input fields */
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
+* {
+    box-sizing: border-box;
 }
 
-/* Set a style for all buttons */
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: url("computer.gif") center center / cover no-repeat fixed;
+    min-height: 100vh;
+}
+
+/* Title */
+h2 {
+    color: white;
+    font-size: clamp(30px, 5vw, 50px);
+    text-align: center;
+    margin: 40px 10px 25px;
+}
+
+/* Login button outside modal */
+.login-btn {
+    display: block;
+    width: fit-content;
+    min-width: 120px;
+    margin: 0 auto;
+    padding: 14px 25px;
+    background-color: #6f6df1;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.login-btn:hover {
+    opacity: 0.8;
+}
+
+/* Input fields */
+input[type=text],
+input[type=password] {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 8px 0 16px;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Buttons */
 button {
-  background-color: #6f6df1;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  border-radius: 10px;
+    background-color: #6f6df1;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 10px;
+    font-size: 16px;
 }
 
 button:hover {
-  opacity: 0.8;
+    opacity: 0.8;
 }
 
-/* Extra styles for the cancel button */
+/* Cancel button */
 .cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336;
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
 }
 
-/* Center the image and position the close button */
+/* Modal background */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 30px 15px;
+}
+
+/* Modal box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 30px auto;
+    border: 1px solid #888;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 450px;
+    overflow: hidden;
+}
+
+/* Image container */
 .imgcontainer {
-  text-align: center;
-  margin: 24px 0 12px 0;
-  position: relative;
+    text-align: center;
+    margin: 0;
+    padding: 25px 20px 10px;
+    position: relative;
 }
 
 img.avatar {
-  width: 10%;
-  border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    max-width: 30vw;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
+/* Form container */
 .container {
-  padding: 16px;
+    padding: 20px;
 }
 
+/* Forgot password */
 span.psw {
-  float: right;
-  padding-top: 16px;
+    float: right;
+    padding-top: 16px;
 }
 
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  padding-top: 60px;
-}
-
-/* Modal Content/Box */
-.modal-content {
-  background-color: #fefefe;
-  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-  border: 1px solid #888;
-  width: 20%; /* Could be more or less, depending on screen size */
-}
-
-/* The Close Button (x) */
+/* Close button */
 .close {
-  position: absolute;
-  right: 25px;
-  top: 0;
-  color: #000;
-  font-size: 35px;
-  font-weight: bold;
+    position: absolute;
+    right: 15px;
+    top: 5px;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
-  color: red;
-  cursor: pointer;
+    color: red;
+    cursor: pointer;
 }
 
-/* Add Zoom Animation */
+/* Animation */
 .animate {
-  -webkit-animation: animatezoom 0.6s;
-  animation: animatezoom 0.6s
+    animation: animatezoom 0.4s;
 }
 
-@-webkit-keyframes animatezoom {
-  from {-webkit-transform: scale(0)} 
-  to {-webkit-transform: scale(1)}
-}
-  
 @keyframes animatezoom {
-  from {transform: scale(0)} 
-  to {transform: scale(1)}
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
 }
 
-/* Change styles for span and cancel button on extra small screens */
+/* Tablets */
+@media screen and (max-width: 768px) {
+
+    h2 {
+        margin-top: 30px;
+    }
+
+    .modal {
+        padding: 20px 12px;
+    }
+
+    .modal-content {
+        max-width: 500px;
+    }
+}
+
+/* Mobile phones */
+@media screen and (max-width: 480px) {
+
+    h2 {
+        font-size: 32px;
+        margin-top: 25px;
+    }
+
+    .login-btn {
+        width: 80%;
+        max-width: 250px;
+    }
+
+    .modal {
+        padding: 10px;
+    }
+
+    .modal-content {
+        width: 100%;
+        margin: 10px auto;
+        border-radius: 8px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    img.avatar {
+        width: 80px;
+        height: 80px;
+    }
+
+    .close {
+        font-size: 30px;
+        right: 10px;
+    }
+
+    span.psw {
+        float: none;
+        display: block;
+        text-align: center;
+        padding-top: 12px;
+    }
+
+    .cancelbtn {
+        width: 100%;
+    }
+}
+
+/* Very small phones */
 @media screen and (max-width: 300px) {
-  span.psw {
-     display: block;
-     float: none;
-  }
-  .cancelbtn {
-     width: 100%;
-  }
+
+    h2 {
+        font-size: 26px;
+    }
+
+    .container {
+        padding: 12px;
+    }
+
+    input[type=text],
+    input[type=password],
+    button {
+        font-size: 14px;
+    }
 }
 </style>
 </head>
+
 <body>
 
-<h2><center>Log In Here!!</center></h2>
+<h2>Log In Here!!</h2>
 
-<center><button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button></center>
+<button class="login-btn"
+    onclick="document.getElementById('id01').style.display='block'">
+    Login
+</button>
 
 <div id="id01" class="modal">
-  
+
     <form class="modal-content animate" onsubmit="return validateForm()">
+
         <div class="imgcontainer">
-          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-          <img src="man.png" alt="Avatar" class="avatar">
+
+            <span onclick="document.getElementById('id01').style.display='none'"
+                class="close"
+                title="Close Modal">
+                &times;
+            </span>
+
+            <img src="man.png" alt="Avatar" class="avatar">
+
         </div>
-    
+
         <div class="container">
-          <label for="uname"><b>Username</b></label>
-          <input type="text" id="username" placeholder="Your Username" name="uname" required>
-    
-          <label for="psw"><b>Password</b></label>
-          <input type="password" id="password" placeholder="Your Password" name="psw" required>
-            
-          <button type="submit">Login</button>
-          <label>
-            <input type="checkbox" checked="checked" name="remember"> Remember me
-          </label>
+
+            <label for="username">
+                <b>Username</b>
+            </label>
+
+            <input
+                type="text"
+                id="username"
+                placeholder="Your Username"
+                name="uname"
+                required
+            >
+
+            <label for="password">
+                <b>Password</b>
+            </label>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Your Password"
+                name="psw"
+                required
+            >
+
+            <button type="submit">
+                Login
+            </button>
+
+            <label>
+                <input type="checkbox" checked="checked" name="remember">
+                Remember me
+            </label>
+
         </div>
-    
+
         <div class="container" style="background-color:#f1f1f1">
-          <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-          <span class="psw">Forgot <a href="#">password?</a></span>
+
+            <button
+                type="button"
+                onclick="document.getElementById('id01').style.display='none'"
+                class="cancelbtn">
+                Cancel
+            </button>
+
+            <span class="psw">
+                Forgot <a href="#">password?</a>
+            </span>
+
         </div>
-      </form>
-    </div>
-    <script>
-    function validateForm() {
+
+    </form>
+
+</div>
+
+<script>
+
+function validateForm() {
+
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
-    
+
     var validUsername = "gwapo";
     var validPassword = "koooo";
-    
-    if (username === validUsername && password === validPassword)
-    {
+
+    if (username === validUsername && password === validPassword) {
+
         window.location.href = "index.html";
         return false;
-    }
-     else {
+
+    } else {
+
         alert("Invalid Username or password");
         return false;
-        }
+
     }
-    </script>
-    </body>
-    </html>
+}
+
+</script>
+
+</body>
+</html>
