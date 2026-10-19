@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Homepage</title>
 
     <link rel="stylesheet"
@@ -53,18 +54,17 @@
             top: -100px;
         }
 
-        /* TOP-RIGHT NAVIGATION */
+        /* NAVIGATION */
         .navigation {
-            position: absolute;
+            position: fixed;
             top: 20px;
             right: 20px;
-            left: 20px;
             display: flex;
             justify-content: flex-end;
             align-items: center;
             flex-wrap: wrap;
             gap: 10px;
-            z-index: 10;
+            z-index: 1000;
         }
 
         .nav-btn {
@@ -72,13 +72,14 @@
             justify-content: center;
             align-items: center;
             text-decoration: none;
-            background: rgba(255, 255, 255, 0.92);
+            white-space: nowrap;
+            background: rgba(255, 255, 255, 0.94);
             color: #555;
             padding: 12px 18px;
             border-radius: 4px;
             font-size: 15px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
-            transition: 0.3s;
+            transition: 0.3s ease;
         }
 
         .nav-btn i {
@@ -127,6 +128,7 @@
             overflow-wrap: anywhere;
         }
 
+        /* LOGOUT BUTTON */
         .logout-btn {
             display: inline-flex;
             align-items: center;
@@ -141,7 +143,7 @@
             font-weight: bold;
             border-radius: 3px;
             font-size: 14px;
-            transition: 0.3s;
+            transition: 0.3s ease;
         }
 
         .logout-btn:hover {
@@ -149,7 +151,7 @@
             transform: translateY(-2px);
         }
 
-        /* TABLETS */
+        /* TABLETS AND SMALL LAPTOPS */
         @media (max-width: 900px) {
             .navigation {
                 gap: 8px;
@@ -168,22 +170,24 @@
         /* MOBILE PHONES */
         @media (max-width: 600px) {
             body {
-                padding: 110px 14px 25px;
+                padding: 100px 14px 25px;
                 background-attachment: scroll;
             }
 
             .navigation {
                 top: 12px;
-                right: 10px;
-                left: 10px;
-                justify-content: center;
+                right: 12px;
+                left: 12px;
+                display: grid;
+                grid-template-columns: repeat(4, minmax(0, 1fr));
                 gap: 6px;
             }
 
             .nav-btn {
-                padding: 10px 11px;
-                font-size: 12px;
-                flex: 0 1 auto;
+                width: 100%;
+                min-width: 0;
+                padding: 10px 2px;
+                font-size: 11px;
             }
 
             .nav-btn i {
@@ -210,16 +214,16 @@
         /* VERY SMALL PHONES */
         @media (max-width: 360px) {
             body {
-                padding-top: 105px;
+                padding-top: 95px;
             }
 
             .navigation {
-                gap: 5px;
+                gap: 4px;
             }
 
             .nav-btn {
-                padding: 9px 8px;
-                font-size: 11px;
+                padding: 9px 1px;
+                font-size: 10px;
             }
 
             .nav-btn i {
@@ -256,6 +260,7 @@
 
 <body>
 
+    <!-- NAVIGATION BUTTONS -->
     <nav class="navigation">
         <a href="index.html" class="nav-btn">
             <i class="fa-solid fa-house"></i>Home
@@ -274,8 +279,10 @@
         </a>
     </nav>
 
+    <!-- MAIN CONTENT -->
     <main class="container">
         <section class="welcome-card">
+
             <h1>Welcome to my Homepage!</h1>
 
             <p>
@@ -284,20 +291,24 @@
                 about technology, programming, and web development.
                 This website was created as part of my learning journey
                 in coding. Here, you will find my projects, activities,
-                and web development.
+                and web development work.
             </p>
 
-            <button class="logout-btn" onclick="logout()">
+            <button type="button" class="logout-btn" onclick="logout()">
                 <i class="fa-solid fa-right-from-bracket"></i>
                 LOGOUT
             </button>
+
         </section>
     </main>
 
     <script>
         function logout() {
-            alert("You have been logged out!");
-            window.location.href = "Log In Form.html";
+            const confirmLogout = confirm("Are you sure you want to log out?");
+
+            if (confirmLogout) {
+                window.location.href = "Log In Form.html";
+            }
         }
     </script>
 
