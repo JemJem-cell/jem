@@ -25,25 +25,25 @@
         body {
             width: 100%;
             min-height: 100vh;
+            min-height: 100dvh;
             font-family: Arial, Helvetica, sans-serif;
-
             background: url("bom-dia-java.gif") center center / cover no-repeat fixed;
-
             overflow-x: hidden;
+            padding: 100px 0 30px;
         }
 
         /* TOP-RIGHT NAVIGATION */
         .navigation {
-            position: absolute;
+            position: fixed;
             top: 20px;
             right: 20px;
-            left: 20px;
             display: flex;
             justify-content: flex-end;
             align-items: center;
             flex-wrap: wrap;
             gap: 10px;
-            z-index: 10;
+            max-width: calc(100% - 40px);
+            z-index: 1000;
         }
 
         .nav-btn {
@@ -51,13 +51,14 @@
             justify-content: center;
             align-items: center;
             text-decoration: none;
-            background: rgba(255, 255, 255, 0.92);
+            white-space: nowrap;
+            background: rgba(255, 255, 255, 0.94);
             color: #555;
             padding: 12px 18px;
-            border-radius: 4px;
+            border-radius: 6px;
             font-size: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
-            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transition: 0.3s ease;
         }
 
         .nav-btn i {
@@ -69,14 +70,13 @@
             color: #163b7a;
             transform: translateY(-3px);
         }
-        /* Main product container */
+
+        /* MAIN PRODUCT CONTAINER */
         .product-box {
             width: calc(100% - 40px);
             max-width: 1400px;
-
             margin: 0 auto 40px;
             padding: clamp(15px, 3vw, 35px);
-
             background: white;
             border-radius: 12px;
             text-align: center;
@@ -93,7 +93,7 @@
             margin-bottom: 25px;
         }
 
-        /* Responsive product grid */
+        /* RESPONSIVE PRODUCT GRID */
         .products {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -102,22 +102,18 @@
             align-items: stretch;
         }
 
-        /* Product card */
+        /* PRODUCT CARD */
         .card {
             display: flex;
             flex-direction: column;
             align-items: stretch;
-
             min-width: 0;
             height: 100%;
             padding: clamp(10px, 1.5vw, 18px);
-
             background: #f5f5f5;
             border-radius: 10px;
-
             box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
-
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .card:hover {
@@ -128,13 +124,9 @@
         .card img {
             display: block;
             width: 100%;
-
-            /* Image height adapts to the card width */
             height: clamp(150px, 18vw, 230px);
-
             object-fit: contain;
             object-position: center;
-
             background: white;
             border-radius: 6px;
         }
@@ -143,7 +135,6 @@
             font-size: clamp(15px, 1.5vw, 20px);
             line-height: 1.4;
             margin: 15px 0 8px;
-
             overflow-wrap: anywhere;
         }
 
@@ -160,30 +151,34 @@
             margin: 12px 0;
         }
 
+        /* INQUIRE BUTTON */
         .inquire {
+            display: block;
             width: 100%;
             min-height: 44px;
             padding: 11px 8px;
             margin-top: auto;
-
             background: #0b3d91;
             color: white;
-
             border: none;
             border-radius: 6px;
-
             font-size: clamp(14px, 1.3vw, 16px);
             cursor: pointer;
             overflow-wrap: anywhere;
-
-            transition: background 0.3s;
+            transition: background 0.3s ease;
         }
 
         .inquire:hover {
             background: #082d6b;
         }
 
-        /* Smaller laptops and tablets */
+        .inquire:focus-visible,
+        .nav-btn:focus-visible {
+            outline: 3px solid #04AA6D;
+            outline-offset: 3px;
+        }
+
+        /* SMALLER LAPTOPS AND TABLETS */
         @media (max-width: 1024px) {
             .products {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -194,19 +189,60 @@
             }
         }
 
-        /* Mobile phones */
-        @media (max-width: 600px) {
+        /* TABLETS */
+        @media (max-width: 768px) {
             body {
+                padding-top: 95px;
                 background-attachment: scroll;
             }
 
             .navigation {
-                padding: 15px;
+                top: 15px;
+                right: 15px;
+                max-width: calc(100% - 30px);
+                gap: 8px;
             }
 
             .nav-btn {
-                padding: 12px 18px;
+                padding: 10px 13px;
                 font-size: 14px;
+            }
+
+            .nav-btn i {
+                margin-right: 5px;
+            }
+
+            .product-box {
+                width: calc(100% - 30px);
+            }
+        }
+
+        /* MOBILE PHONES */
+        @media (max-width: 600px) {
+            body {
+                padding-top: 90px;
+            }
+
+            .navigation {
+                top: 12px;
+                right: 12px;
+                left: 12px;
+                max-width: none;
+                display: grid;
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                gap: 6px;
+            }
+
+            .nav-btn {
+                width: 100%;
+                min-width: 0;
+                padding: 10px 2px;
+                font-size: 11px;
+                border-radius: 5px;
+            }
+
+            .nav-btn i {
+                margin-right: 3px;
             }
 
             .product-box {
@@ -251,8 +287,21 @@
             }
         }
 
-        /* Very small mobile screens */
+        /* VERY SMALL MOBILE SCREENS */
         @media (max-width: 360px) {
+            .navigation {
+                gap: 4px;
+            }
+
+            .nav-btn {
+                font-size: 10px;
+                padding: 10px 1px;
+            }
+
+            .nav-btn i {
+                margin-right: 2px;
+            }
+
             .product-box {
                 width: calc(100% - 16px);
                 padding: 10px 8px;
@@ -275,7 +324,8 @@
 
 <body>
 
-   <nav class="navigation">
+    <!-- TOP NAVIGATION -->
+    <nav class="navigation">
         <a href="index.html" class="nav-btn">
             <i class="fa-solid fa-house"></i>Home
         </a>
@@ -293,8 +343,8 @@
         </a>
     </nav>
 
-    <!-- Products -->
-    <div class="product-box">
+    <!-- PRODUCTS -->
+    <main class="product-box">
 
         <h1>Products</h1>
         <p>Browse our available products.</p>
@@ -306,7 +356,7 @@
                 <h3>Under Armour Short</h3>
                 <p>Comfortable, lightweight, and stylish for everyday wear.</p>
                 <p class="price">&#8369; 500</p>
-                <button class="inquire">Inquire Now</button>
+                <button class="inquire" type="button">Inquire Now</button>
             </div>
 
             <div class="card">
@@ -314,7 +364,7 @@
                 <h3>Under Armour Compression Long Sleeve T-Shirt</h3>
                 <p>Comfortable, fitted, and suitable for sports or workouts.</p>
                 <p class="price">&#8369; 600</p>
-                <button class="inquire">Inquire Now</button>
+                <button class="inquire" type="button">Inquire Now</button>
             </div>
 
             <div class="card">
@@ -322,7 +372,7 @@
                 <h3>Under Armour Backpack</h3>
                 <p>Durable, spacious, and perfect for carrying everyday essentials.</p>
                 <p class="price">&#8369; 1,500</p>
-                <button class="inquire">Inquire Now</button>
+                <button class="inquire" type="button">Inquire Now</button>
             </div>
 
             <div class="card">
@@ -330,7 +380,7 @@
                 <h3>Under Armour Running Shoes</h3>
                 <p>Lightweight shoes with comfortable cushioning and reliable support.</p>
                 <p class="price">&#8369; 2,000</p>
-                <button class="inquire">Inquire Now</button>
+                <button class="inquire" type="button">Inquire Now</button>
             </div>
 
             <div class="card">
@@ -338,7 +388,7 @@
                 <h3>Under Armour Legging Pants</h3>
                 <p>Stretchy and comfortable leggings designed for flexibility and movement.</p>
                 <p class="price">&#8369; 900</p>
-                <button class="inquire">Inquire Now</button>
+                <button class="inquire" type="button">Inquire Now</button>
             </div>
 
             <div class="card">
@@ -346,7 +396,7 @@
                 <h3>Under Armour Smart Watch</h3>
                 <p>A stylish watch with useful features for workouts and daily activities.</p>
                 <p class="price">&#8369; 3,000</p>
-                <button class="inquire">Inquire Now</button>
+                <button class="inquire" type="button">Inquire Now</button>
             </div>
 
             <div class="card">
@@ -354,7 +404,7 @@
                 <h3>Under Armour Hoodie</h3>
                 <p>A soft and warm hoodie for casual wear and outdoor activities.</p>
                 <p class="price">&#8369; 1,200</p>
-                <button class="inquire">Inquire Now</button>
+                <button class="inquire" type="button">Inquire Now</button>
             </div>
 
             <div class="card">
@@ -362,7 +412,7 @@
                 <h3>Under Armour Jacket</h3>
                 <p>A lightweight jacket for outdoor activities.</p>
                 <p class="price">&#8369; 1,800</p>
-                <button class="inquire">Inquire Now</button>
+                <button class="inquire" type="button">Inquire Now</button>
             </div>
 
             <div class="card">
@@ -370,7 +420,7 @@
                 <h3>Under Armour Cap</h3>
                 <p>A stylish cap for training and everyday wear.</p>
                 <p class="price">&#8369; 450</p>
-                <button class="inquire">Inquire Now</button>
+                <button class="inquire" type="button">Inquire Now</button>
             </div>
 
             <div class="card">
@@ -378,7 +428,7 @@
                 <h3>Under Armour Sports Socks</h3>
                 <p>Comfortable sports socks for daily use and workouts.</p>
                 <p class="price">&#8369; 250</p>
-                <button class="inquire">Inquire Now</button>
+                <button class="inquire" type="button">Inquire Now</button>
             </div>
 
             <div class="card">
@@ -386,7 +436,7 @@
                 <h3>Under Armour Training Gloves</h3>
                 <p>Training gloves designed for grip and comfort during exercise.</p>
                 <p class="price">&#8369; 550</p>
-                <button class="inquire">Inquire Now</button>
+                <button class="inquire" type="button">Inquire Now</button>
             </div>
 
             <div class="card">
@@ -394,7 +444,7 @@
                 <h3>Under Armour Sports Shirt</h3>
                 <p>A breathable shirt suitable for training and casual wear.</p>
                 <p class="price">&#8369; 700</p>
-                <button class="inquire">Inquire Now</button>
+                <button class="inquire" type="button">Inquire Now</button>
             </div>
 
             <div class="card">
@@ -402,7 +452,7 @@
                 <h3>Under Armour Sweatpants</h3>
                 <p>Comfortable pants for exercise and everyday use.</p>
                 <p class="price">&#8369; 1,000</p>
-                <button class="inquire">Inquire Now</button>
+                <button class="inquire" type="button">Inquire Now</button>
             </div>
 
             <div class="card">
@@ -410,7 +460,7 @@
                 <h3>Under Armour Slides</h3>
                 <p>Easy-to-wear slides for relaxing at home or after a workout.</p>
                 <p class="price">&#8369; 650</p>
-                <button class="inquire">Inquire Now</button>
+                <button class="inquire" type="button">Inquire Now</button>
             </div>
 
             <div class="card">
@@ -418,7 +468,7 @@
                 <h3>Under Armour Water Bottle</h3>
                 <p>A convenient bottle to help you stay hydrated.</p>
                 <p class="price">&#8369; 400</p>
-                <button class="inquire">Inquire Now</button>
+                <button class="inquire" type="button">Inquire Now</button>
             </div>
 
             <div class="card">
@@ -426,7 +476,7 @@
                 <h3>Under Armour Gym Bag</h3>
                 <p>A spacious bag for workout clothes and gym essentials.</p>
                 <p class="price">&#8369; 1,300</p>
-                <button class="inquire">Inquire Now</button>
+                <button class="inquire" type="button">Inquire Now</button>
             </div>
 
             <div class="card">
@@ -434,7 +484,7 @@
                 <h3>Under Armour Sports Bra</h3>
                 <p>A supportive sports top for exercise and active movement.</p>
                 <p class="price">&#8369; 850</p>
-                <button class="inquire">Inquire Now</button>
+                <button class="inquire" type="button">Inquire Now</button>
             </div>
 
             <div class="card">
@@ -442,7 +492,7 @@
                 <h3>Under Armour Compression Shirt</h3>
                 <p>A fitted training shirt for a comfortable workout.</p>
                 <p class="price">&#8369; 750</p>
-                <button class="inquire">Inquire Now</button>
+                <button class="inquire" type="button">Inquire Now</button>
             </div>
 
             <div class="card">
@@ -450,7 +500,7 @@
                 <h3>Under Armour Running Shorts</h3>
                 <p>Lightweight shorts for running, sports, and training.</p>
                 <p class="price">&#8369; 600</p>
-                <button class="inquire">Inquire Now</button>
+                <button class="inquire" type="button">Inquire Now</button>
             </div>
 
             <div class="card">
@@ -458,7 +508,7 @@
                 <h3>Under Armour Training Shoes</h3>
                 <p>Training shoes for gym sessions and everyday workouts.</p>
                 <p class="price">&#8369; 2,200</p>
-                <button class="inquire">Inquire Now</button>
+                <button class="inquire" type="button">Inquire Now</button>
             </div>
 
             <div class="card">
@@ -466,11 +516,11 @@
                 <h3>Under Armour Sunglasses</h3>
                 <p>Sporty sunglasses for outdoor activities and sunny days.</p>
                 <p class="price">&#8369; 1,100</p>
-                <button class="inquire">Inquire Now</button>
+                <button class="inquire" type="button">Inquire Now</button>
             </div>
 
         </div>
-    </div>
+    </main>
 
 </body>
 </html>
