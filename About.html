@@ -21,40 +21,43 @@
         body {
             min-height: 100vh;
             min-height: 100dvh;
-            background: url("chilled-lamb-mienar.gif") center / cover fixed;
+            background: url("chilled-lamb-mienar.gif")
+                        center / cover no-repeat fixed;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px;
+            padding: 100px 20px 30px;
             overflow-x: hidden;
         }
 
         /* TOP-RIGHT NAVIGATION */
         .navigation {
-            position: absolute;
+            position: fixed;
             top: 20px;
             right: 20px;
-            left: 20px;
             display: flex;
             justify-content: flex-end;
             align-items: center;
             flex-wrap: wrap;
             gap: 10px;
-            z-index: 10;
+            max-width: calc(100% - 40px);
+            z-index: 1000;
         }
 
+        /* NAVIGATION BUTTONS */
         .nav-btn {
             display: inline-flex;
             justify-content: center;
             align-items: center;
             text-decoration: none;
-            background: rgba(255, 255, 255, 0.92);
+            white-space: nowrap;
+            background: rgba(255, 255, 255, 0.94);
             color: #555;
             padding: 12px 18px;
-            border-radius: 4px;
+            border-radius: 6px;
             font-size: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
-            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transition: 0.3s ease;
         }
 
         .nav-btn i {
@@ -66,6 +69,7 @@
             color: #163b7a;
             transform: translateY(-3px);
         }
+
         /* ABOUT BOX */
         .contact-box {
             width: 100%;
@@ -94,12 +98,24 @@
         /* TABLETS */
         @media (max-width: 768px) {
             body {
-                padding: 18px;
+                padding: 100px 18px 25px;
                 background-attachment: scroll;
             }
 
             .navigation {
-                margin-bottom: 25px;
+                top: 15px;
+                right: 15px;
+                max-width: calc(100% - 30px);
+                gap: 8px;
+            }
+
+            .nav-btn {
+                padding: 10px 13px;
+                font-size: 14px;
+            }
+
+            .nav-btn i {
+                margin-right: 5px;
             }
 
             .contact-box {
@@ -110,16 +126,29 @@
         /* MOBILE PHONES */
         @media (max-width: 480px) {
             body {
-                padding: 12px;
+                padding: 105px 12px 20px;
             }
 
             .navigation {
-                margin-bottom: 20px;
+                top: 12px;
+                right: 12px;
+                left: 12px;
+                max-width: none;
+                display: grid;
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                gap: 6px;
             }
 
             .nav-btn {
-                padding: 11px 15px;
-                font-size: 14px;
+                width: 100%;
+                min-width: 0;
+                padding: 10px 3px;
+                font-size: 11px;
+                border-radius: 5px;
+            }
+
+            .nav-btn i {
+                margin-right: 4px;
             }
 
             .contact-box {
@@ -135,12 +164,28 @@
                 line-height: 1.7;
             }
         }
+
+        /* EXTRA SMALL PHONES */
+        @media (max-width: 350px) {
+            .navigation {
+                gap: 4px;
+            }
+
+            .nav-btn {
+                font-size: 10px;
+                padding: 10px 2px;
+            }
+
+            .nav-btn i {
+                margin-right: 3px;
+            }
+        }
     </style>
 </head>
 
 <body>
 
-     <nav class="navigation">
+    <nav class="navigation">
         <a href="index.html" class="nav-btn">
             <i class="fa-solid fa-house"></i>Home
         </a>
@@ -157,6 +202,7 @@
             <i class="fa-solid fa-envelope"></i>Contact
         </a>
     </nav>
+
     <main class="contact-box">
         <h1>About</h1>
 
@@ -174,6 +220,7 @@
             to serve you better.
 
             <br><br>
+
             Thank you for choosing and supporting our shop!
         </p>
     </main>
