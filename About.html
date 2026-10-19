@@ -29,42 +29,43 @@
             overflow-x: hidden;
         }
 
-        /* BACK TO HOME BUTTON */
+        /* TOP-RIGHT NAVIGATION */
         .navigation {
-            width: 100%;
-            margin: 0 0 20px 0;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            left: 20px;
             display: flex;
-            justify-content: flex end;
-            gap: 12px;
+            justify-content: flex-end;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            z-index: 10;
         }
+
         .nav-btn {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
             text-decoration: none;
-
-            background: rgba(255, 255, 255, 0.9);
-            color: #666;
-
-            padding: 12px 25px;
-            min-width: 110px;
-
+            background: rgba(255, 255, 255, 0.92);
+            color: #555;
+            padding: 12px 18px;
             border-radius: 4px;
-
-            box-shadow:
-                0 4px 10px rgba(0, 0, 0, 0.12);
-
+            font-size: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
             transition: 0.3s;
         }
 
         .nav-btn i {
-            margin-right: 8px;
+            margin-right: 7px;
         }
 
         .nav-btn:hover {
             background: white;
             color: #163b7a;
             transform: translateY(-3px);
-            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
         }
-
         /* ABOUT BOX */
         .contact-box {
             width: 100%;
