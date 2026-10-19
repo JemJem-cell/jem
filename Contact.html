@@ -32,28 +32,36 @@
             margin: 15px 10px 25px;
         }
 
-        /* Navigation */
+        /* TOP-RIGHT NAVIGATION */
         .navigation {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            left: 20px;
             display: flex;
-            justify-content: flex-start;
+            justify-content: flex-end;
+            align-items: center;
             flex-wrap: wrap;
-            gap: 12px;
-            padding: 20px;
+            gap: 10px;
+            z-index: 10;
         }
 
         .nav-btn {
             display: inline-flex;
-            align-items: center;
             justify-content: center;
-            gap: 8px;
+            align-items: center;
             text-decoration: none;
-            background: rgba(255, 255, 255, 0.9);
-            color: #333;
-            padding: 12px 22px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.92);
+            color: #555;
+            padding: 12px 18px;
+            border-radius: 4px;
+            font-size: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
             transition: 0.3s;
-            font-size: 16px;
+        }
+
+        .nav-btn i {
+            margin-right: 7px;
         }
 
         .nav-btn:hover {
