@@ -1,270 +1,379 @@
+
 <!DOCTYPE html>
-<html> 
-<head> 
-<title>Products</title>
-<link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
 
-<style>
-    * {
-        box-sizing: border-box;
-    }
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        min-height: 100vh;
-
-        background: url("bom-dia-java.gif");
-        background-attachment: fixed;
-        background-position: center;
-        background-size: cover;
-
-        /* IMPORTANT: allow the page to scroll */
-        overflow-y: auto;
-        overflow-x: hidden;
-    }
-
-    /* Navigation */
-    .navigation {
-        margin: 20px;
-        display: flex;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-        gap: 12px;
-    }
-
-    .nav-btn {
-        text-decoration: none;
-        background: rgba(255, 255, 255, 0.9);
-        color: #666;
-
-        padding: 12px 25px;
-        min-width: 110px;
-
-        border-radius: 4px;
-
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
-
-        transition: 0.3s;
-    }
-
-    .nav-btn i {
-        margin-right: 7px;
-    }
-
-    .nav-btn:hover {
-        background: white;
-        color: #163b7a;
-
-        transform: translateY(-3px);
-
-        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
-    }
-
-    /* Product container */
-    .product-box {
-        width: 90%;
-        max-width: 1400px;
-        background: white;
-
-        margin: 20px auto 40px;
-        padding: 30px;
-
-        border-radius: 10px;
-        text-align: center;
-    }
-
-    .product-box h1 {
-        margin-top: 0;
-        margin-bottom: 10px;
-    }
-
-    .product-box > p {
-        margin-bottom: 25px;
-    }
-
-    /* Products */
-    .products {
-        display: grid;
-
-        /* 3 products per row */
-        grid-template-columns: repeat(3, 1fr);
-
-        gap: 20px;
-        width: 100%;
-    }
-
-    /* Product card */
-    .card {
-        background: #f5f5f5;
-
-        padding: 15px;
-
-        text-align: center;
-
-        border-radius: 8px;
-
-        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-
-        display: flex;
-        flex-direction: column;
-    }
-
-    .card img {
-        width: 100%;
-        height: 200px;
-
-        object-fit: contain;
-
-        border-radius: 5px;
-
-        background: white;
-    }
-
-    .card h3 {
-        min-height: 45px;
-        margin: 15px 0 10px;
-    }
-
-    .card p {
-        line-height: 1.5;
-    }
-
-    .price {
-        font-size: 20px;
-        font-weight: bold;
-        color: #0b3d91;
-
-        margin: 10px 0;
-    }
-
-    .inquire {
-        width: 100%;
-
-        padding: 10px;
-
-        margin-top: auto;
-
-        background: #0b3d91;
-        color: white;
-
-        border: none;
-        border-radius: 5px;
-
-        cursor: pointer;
-
-        font-size: 16px;
-    }
-
-    .inquire:hover {
-        background: #082d6b;
-    }
-
-    /* Tablet */
-    @media (max-width: 900px) {
-        .products {
-            grid-template-columns: repeat(2, 1fr);
+    <style>
+        * {
+            box-sizing: border-box;
         }
-    }
 
-    /* Mobile */
-    @media (max-width: 600px) {
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            background: url("bom-dia-java.gif") center center / cover fixed;
+            overflow-x: hidden;
+        }
+
+        .navigation {
+            margin: 20px;
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .nav-btn {
+            display: inline-block;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.9);
+            color: #666;
+            padding: 12px 25px;
+            border-radius: 4px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+            transition: 0.3s;
+        }
+
+        .nav-btn i {
+            margin-right: 7px;
+        }
+
+        .nav-btn:hover {
+            background: white;
+            color: #163b7a;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+        }
+
         .product-box {
-            width: 95%;
-            padding: 15px;
+            width: 90%;
+            max-width: 1400px;
+            background: white;
+            margin: 20px auto 40px;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .product-box h1 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .product-box > p {
+            margin-bottom: 25px;
         }
 
         .products {
-            grid-template-columns: 1fr;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+            width: 100%;
+        }
+
+        .card {
+            background: #f5f5f5;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
         }
 
         .card img {
-            height: 220px;
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            border-radius: 5px;
+            background: white;
         }
-    }
-</style>
 
-</head> <body>
-<!-- Navigation -->
-<div class="navigation">
-    <a href="index.html" class="nav-btn">
-        <i class="fa-solid fa-house"></i>
-        Back to Home
-    </a>
-</div>
+        .card h3 {
+            min-height: 45px;
+            margin: 15px 0 10px;
+        }
 
-<!-- Products -->
-<div class="product-box">
+        .card p {
+            line-height: 1.5;
+        }
 
-    <h1>Products</h1>
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #0b3d91;
+            margin: 10px 0;
+        }
 
-    <p>Browse our available products.</p>
+        .inquire {
+            width: 100%;
+            padding: 10px;
+            margin-top: auto;
+            background: #0b3d91;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
 
-    <div class="products">
+        .inquire:hover {
+            background: #082d6b;
+        }
 
-        <div class="card">
-            <img src="short.webp" alt="Under Armour Short">
-            <h3>Under Armour Short</h3>
-            <p>
-                Comfortable, lightweight, and stylish for everyday wear.
-            </p>
-            <p class="price">&#8369; 500</p>
-            <button class="inquire">Inquire Now</button>
-        </div>
+        @media (max-width: 900px) {
+            .products {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
 
-        <div class="card">
-            <img src="long sleeve.jpg"
-                 alt="Under Armour Compression Long Sleeve">
-            <h3>Under Armour Compression Long Sleeve T-Shirt</h3>
-            <p>
-                Comfortable, fitted, and suitable for sports or workouts.
-            </p>
-            <p class="price">&#8369; 600</p>
-            <button class="inquire">Inquire Now</button>
-        </div>
+            .product-box {
+                width: 94%;
+            }
+        }
 
-        <div class="card">
-            <img src="bag.jpg" alt="Under Armour Backpack">
-            <h3>Under Armour Backpack</h3>
-            <p>
-                Durable, spacious, and perfect for carrying everyday essentials.
-            </p>
-            <p class="price">&#8369; 1,500</p>
-            <button class="inquire">Inquire Now</button>
-        </div>
+        @media (max-width: 600px) {
+            body {
+                background-attachment: scroll;
+            }
 
-        <div class="card">
-            <img src="shoe.webp" alt="Under Armour Running Shoes">
-            <h3>Under Armour Running Shoes</h3>
-            <p>
-                Lightweight and comfortable shoes designed to provide reliable support and cushioning during every run.
-            </p>
-            <p class="price">&#8369; 2,000</p>
-            <button class="inquire">Inquire Now</button>
-        </div>
+            .navigation {
+                margin: 15px;
+            }
 
-        <div class="card">
-            <img src="pants.jpg" alt="Under Armour ">
-            <h3>Under Armour Legging Pants</h3>
-            <p>
-                Stretchy and comfortable leggings designed for flexibility, support, and all-day movement.
-            </p>
-            <p class="price">&#8369; 900</p>
-            <button class="inquire">Inquire Now</button>
-        </div>
+            .product-box {
+                width: 95%;
+                padding: 15px;
+            }
 
-        <div class="card">
-            <img src="smart watch.webp" alt="Under Armour Smart Watch">
-            <h3>Under Armour Smart Watch</h3>
-            <p>
-                Smart and stylish watch with useful features for tracking workouts, staying active, and managing your daily activities.
-            </p>
-            <p class="price">&#8369; 3,000</p>
-            <button class="inquire">Inquire Now</button>
+            .products {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .card img {
+                height: 220px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <div class="navigation">
+        <a href="index.html" class="nav-btn">
+            <i class="fa-solid fa-house"></i>
+            Back to Home
+        </a>
+    </div>
+
+    <!-- Products -->
+    <div class="product-box">
+
+        <h1>Products</h1>
+        <p>Browse our available products.</p>
+
+        <div class="products">
+
+            <!-- Product 1 -->
+            <div class="card">
+                <img src="short.webp" alt="Under Armour Short">
+                <h3>Under Armour Short</h3>
+                <p>Comfortable, lightweight, and stylish for everyday wear.</p>
+                <p class="price">&#8369; 500</p>
+                <button class="inquire">Inquire Now</button>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="card">
+                <img src="long sleeve.jpg" alt="Under Armour Compression Long Sleeve">
+                <h3>Under Armour Compression Long Sleeve T-Shirt</h3>
+                <p>Comfortable, fitted, and suitable for sports or workouts.</p>
+                <p class="price">&#8369; 600</p>
+                <button class="inquire">Inquire Now</button>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="card">
+                <img src="bag.jpg" alt="Under Armour Backpack">
+                <h3>Under Armour Backpack</h3>
+                <p>Durable, spacious, and perfect for carrying everyday essentials.</p>
+                <p class="price">&#8369; 1,500</p>
+                <button class="inquire">Inquire Now</button>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="card">
+                <img src="shoe.webp" alt="Under Armour Running Shoes">
+                <h3>Under Armour Running Shoes</h3>
+                <p>Lightweight shoes with comfortable cushioning and reliable support.</p>
+                <p class="price">&#8369; 2,000</p>
+                <button class="inquire">Inquire Now</button>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="card">
+                <img src="pants.jpg" alt="Under Armour Legging Pants">
+                <h3>Under Armour Legging Pants</h3>
+                <p>Stretchy and comfortable leggings designed for flexibility and movement.</p>
+                <p class="price">&#8369; 900</p>
+                <button class="inquire">Inquire Now</button>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="card">
+                <img src="smart watch.webp" alt="Under Armour Smart Watch">
+                <h3>Under Armour Smart Watch</h3>
+                <p>A stylish watch with useful features for workouts and daily activities.</p>
+                <p class="price">&#8369; 3,000</p>
+                <button class="inquire">Inquire Now</button>
+            </div>
+
+            <!-- Product 7 -->
+            <div class="card">
+                <img src="hoodie.jpg" alt="Under Armour Hoodie">
+                <h3>Under Armour Hoodie</h3>
+                <p>A soft and warm hoodie for casual wear and outdoor activities.</p>
+                <p class="price">&#8369; 1,200</p>
+                <button class="inquire">Inquire Now</button>
+            </div>
+
+            <!-- Product 8 -->
+            <div class="card">
+                <img src="jacket.jpg" alt="Under Armour Jacket">
+                <h3>Under Armour Jacket</h3>
+                <p>A lightweight jacket that helps protect you during outdoor activities.</p>
+                <p class="price">&#8369; 1,800</p>
+                <button class="inquire">Inquire Now</button>
+            </div>
+
+            <!-- Product 9 -->
+            <div class="card">
+                <img src="cap.jpg" alt="Under Armour Cap">
+                <h3>Under Armour Cap</h3>
+                <p>A stylish cap for everyday wear, training, and outdoor adventures.</p>
+                <p class="price">&#8369; 450</p>
+                <button class="inquire">Inquire Now</button>
+            </div>
+
+            <!-- Product 10 -->
+            <div class="card">
+                <img src="socks.jpg" alt="Under Armour Socks">
+                <h3>Under Armour Sports Socks</h3>
+                <p>Comfortable sports socks designed for daily use and workouts.</p>
+                <p class="price">&#8369; 250</p>
+                <button class="inquire">Inquire Now</button>
+            </div>
+
+            <!-- Product 11 -->
+            <div class="card">
+                <img src="gloves.jpg" alt="Under Armour Training Gloves">
+                <h3>Under Armour Training Gloves</h3>
+                <p>Training gloves designed to provide grip and comfort during exercise.</p>
+                <p class="price">&#8369; 550</p>
+                <button class="inquire">Inquire Now</button>
+            </div>
+
+            <!-- Product 12 -->
+            <div class="card">
+                <img src="shirt.jpg" alt="Under Armour Sports Shirt">
+                <h3>Under Armour Sports Shirt</h3>
+                <p>A breathable shirt suitable for training, running, and casual wear.</p>
+                <p class="price">&#8369; 700</p>
+                <button class="inquire">Inquire Now</button>
+            </div>
+
+            <!-- Product 13 -->
+            <div class="card">
+                <img src="sweatpants.jpg" alt="Under Armour Sweatpants">
+                <h3>Under Armour Sweatpants</h3>
+                <p>Relaxed and comfortable pants for exercise or everyday use.</p>
+                <p class="price">&#8369; 1,000</p>
+                <button class="inquire">Inquire Now</button>
+            </div>
+
+            <!-- Product 14 -->
+            <div class="card">
+                <img src="slides.jpg" alt="Under Armour Slides">
+                <h3>Under Armour Slides</h3>
+                <p>Easy-to-wear slides for relaxing at home or after a workout.</p>
+                <p class="price">&#8369; 650</p>
+                <button class="inquire">Inquire Now</button>
+            </div>
+
+            <!-- Product 15 -->
+            <div class="card">
+                <img src="water bottle.jpg" alt="Under Armour Water Bottle">
+                <h3>Under Armour Water Bottle</h3>
+                <p>A convenient bottle to help you stay hydrated during activities.</p>
+                <p class="price">&#8369; 400</p>
+                <button class="inquire">Inquire Now</button>
+            </div>
+
+            <!-- Product 16 -->
+            <div class="card">
+                <img src="gym bag.jpg" alt="Under Armour Gym Bag">
+                <h3>Under Armour Gym Bag</h3>
+                <p>A spacious bag for carrying workout clothes and gym essentials.</p>
+                <p class="price">&#8369; 1,300</p>
+                <button class="inquire">Inquire Now</button>
+            </div>
+
+            <!-- Product 17 -->
+            <div class="card">
+                <img src="sports bra.jpg" alt="Under Armour Sports Bra">
+                <h3>Under Armour Sports Bra</h3>
+                <p>A supportive sports top designed for exercise and active movement.</p>
+                <p class="price">&#8369; 850</p>
+                <button class="inquire">Inquire Now</button>
+            </div>
+
+            <!-- Product 18 -->
+            <div class="card">
+                <img src="compression shirt.jpg" alt="Under Armour Compression Shirt">
+                <h3>Under Armour Compression Shirt</h3>
+                <p>A fitted training shirt for a comfortable and flexible workout.</p>
+                <p class="price">&#8369; 750</p>
+                <button class="inquire">Inquire Now</button>
+            </div>
+
+            <!-- Product 19 -->
+            <div class="card">
+                <img src="running shorts.jpg" alt="Under Armour Running Shorts">
+                <h3>Under Armour Running Shorts</h3>
+                <p>Lightweight shorts designed for running, sports, and training.</p>
+                <p class="price">&#8369; 600</p>
+                <button class="inquire">Inquire Now</button>
+            </div>
+
+            <!-- Product 20 -->
+            <div class="card">
+                <img src="training shoes.jpg" alt="Under Armour Training Shoes">
+                <h3>Under Armour Training Shoes</h3>
+                <p>Training shoes designed for gym sessions and everyday workouts.</p>
+                <p class="price">&#8369; 2,200</p>
+                <button class="inquire">Inquire Now</button>
+            </div>
+
+            <!-- Product 21 -->
+            <div class="card">
+                <img src="sunglasses.jpg" alt="Under Armour Sunglasses">
+                <h3>Under Armour Sunglasses</h3>
+                <p>Sporty sunglasses for outdoor activities and sunny days.</p>
+                <p class="price">&#8369; 1,100</p>
+                <button class="inquire">Inquire Now</button>
+            </div>
+
         </div>
     </div>
-</div>
 
 </body>
 </html>
